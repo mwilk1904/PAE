@@ -1,0 +1,49 @@
+<div class="container page" id="pg_signUp">
+    <div class="row ">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8 mx-auto py-5 h-100">
+            <div class="card card-body">
+                <div class="card-title">
+                    <h4 class="text-center text-gray-900 mt-3">Inscription</h4>
+                </div>
+                <hr>
+
+                <form class="formSignUp  mx-3">
+                    <div class="form-group mt-4 ">
+                        <input type="text" class="form-control " name="pseudo" id="signUp_pseudo" placeholder="Pseudo" required>
+                        <p id="error_pseudo_S" class="text-danger"></p>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control " name="lastName" id="signUp_lastName" placeholder="Nom" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control " name="firstName" id="signUp_firstName" placeholder="Prénom" required>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input type="text" class="form-control " name="email" id="signUp_email" placeholder="Adresse e-mail" required>
+                        <p id="error_email_S" class="text-danger"></p>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="password" class="form-control " name="password" id="signUp_password1" placeholder="Mot de passe" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control " name="passwordConfirm" id="signUp_password2" placeholder="Confirmer mot de passe" required>
+                        </div>
+
+                    </div>
+                    <p id="error_global_S" class="text-danger"></p>
+                </form>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-offset-6 mr-4">
+                        <button type="button" class="btn btn-primary " id="bt_signUp">Confirmer <i class="fas fa-check"></i></button>
+                    </div>
+                    <div class="col-lg-offset-6 ml-4">
+                        <button type="button" class="btn btn-danger " id="bt_back_login">Retour <i class="fas fa-undo"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

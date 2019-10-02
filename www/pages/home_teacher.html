@@ -1,0 +1,425 @@
+<div class="container page" id="pg_home_teacher">
+
+    <!---------------HEADER---------------------------->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" id="welcome_teacher"></a>
+            <div class="collapse navbar-collapse"></div>
+            <div class="navbar-header">
+                <ul class="nav nav-tabs" id="teacher_tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab_t" data-toggle="tab" href="#t_home" role="tab" aria-controls="home_t" aria-selected="true"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="research-tab_t" data-toggle="tab" href="#t_research" role="tab" aria-controls="research_t" aria-selected="false"><i class="fas fa-search"></i> Recherches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="personal_data-tab" data-toggle="tab" href="#payments" role="tab" aria-controls="payments_t" aria-selected="false"><i class="far fa-credit-card"></i> Paiements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="student_details-tab" data-toggle="tab" href="#student_details" role="tab" aria-controls="student_details" aria-selected="false" style="display:none;"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="mobility_details-tab" data-toggle="tab" href="#mobility_details" role="tab" aria-controls="mobility_details" aria-selected="false" style="display:none;"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger" href="#" id="bt_logout_teacher"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!---------------TAB---------------------------->
+    <div class="tab-content" id="content_tab">
+
+        <div class="modal" id="cancelModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Annulation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="font-italic mb-3">Raison de l'annulation:</div>
+                        <select id="cancellation_reasons" class="form-control" style="width: 100%" multiple="multiple">
+                            <option value="" disabled hidden></option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="bt_confirm_modal">Confirmer</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="bt_back_modal">Retour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade show active" id="t_home" role="tabpanel" aria-labelledby="home-tab_t">
+            <div class="row my-3">
+                <div class="col-4">
+                    <h2>Tableau des mobilités</h2>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-success" id="bt_export_csv">Exporter en CSV <i class="fas fa-file-csv"></i></button>
+                            <button type="button" class="btn btn-primary ml-4" id="bt_login_as">Se connecter en tant que <i class="fas fa-sign-in-alt"></i></button>
+                        </div>
+                        <div class="col-5">
+                            <select id="login_users" class="form-control">
+                                    <option value="" selected disabled hidden>Etudiant</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row my-3">
+                <h6 class="font-italic mb-3 mx-3">Double-clickez sur une rangée pour afficher les détails de cette mobilité</h6>
+                <div class="col-12">
+                    <table id="tb_mobilities" class="table my-6 ">
+                        <thead>
+                            <tr>
+                                <th class="d-none"></th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Pref.</th>
+                                <th scope="col">Code de mobilité</th>
+                                <th scope="col">État</th>
+                                <th scope="col">Partenaire</th>
+                                <th scope="col">Pays</th>
+                                <th scope="col">Programme</th>
+                                <th></th>
+                                <th></th>
+                                <th class="d-none"></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="mobility_details" role="tabpanel" aria-labelledby="mobility_details-tab">
+            <div class="row mt-3">
+                <div class="col">
+                    <h2>Détails de la mobilité n°<span class="text-black font-weight-light" id="span_mobility_num"></span></h2>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <h5>Nom de l'élève: <span class="text-danger font-weight-light" id="span_name"></span></h5>
+                        </div>
+                        <div class="col">
+                            <h5>Etat: <span class="text-danger font-weight-light px-1 py-1" id="span_state"></span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-danger ml-3 btn-block my-3" id="bt_back_mobility_details"> Retour <i class="fas fa-undo"></i></button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success mx-3 btn-block my-3" id="bt_save_mobility"> Sauver <i class="far fa-save"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2 ml-1">
+                <h5>Programme: <span class="text-primary font-weight-light" id="span_program"></span></h5>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <h6 class="font-italic mb-3">Documents préalables</h6>
+                    <table id="tb_prior_requests" class="table table-bordered">
+                        <tr>
+                            <th id="scholarshipContract">Contrat de bourse</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_go">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="internshipStudyAgreement">Convention de stage</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_go">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="studentChart">Charte de l'étudiant</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_go">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="passingLangTestProofGo">Preuve de passage des testes linguistiques</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_go">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="commitmentDoc">Documents d'engagements </th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_go">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="firstPayReq"> </th>
+                            <td><button type="button" class="btn btn-success btn-sm send_document doc_send_go">Dossier envoyé à l'HE</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col">
+                    <h6 class="font-italic mb-3">Documents postérieurs</h6>
+                    <table id="tb_posterior_requests" class="table table-bordered">
+                        <tr>
+                            <th id="stayCertificate">Attestation de séjour</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_back">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="transcripts">Relevé de notes</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_back">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="stageCertificate">Certificat de stage</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_back">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="passingLangTestProofBack">Preuve de passage des testes linguistiques</th>
+                            <td><button type="button" class="btn btn-primary btn-sm confirm_document doc_back">Confirmer réception</button></td>
+                        </tr>
+                        <tr>
+                            <th id="secondPayReq"></th>
+                            <td><button type="button" class="btn btn-success btn-sm send_document doc_send_back">Dossier envoyé à l'HE</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="row">
+                        <h5 class="font-italic mb-3 ml-1">Encodages dans logiciels externes</h5>
+                        <table id="tb_encodings" class="table table-bordered">
+                            <tr>
+                                <th id="proEco">ProEco</th>
+                                <td><button type="button" class="btn btn-primary btn-sm btn-block confirm_encoding">Confirmer</button></td>
+                            </tr>
+                            <tr>
+                                <th id="mobilityTool">MobilityTool</th>
+                                <td><button type="button" class="btn btn-primary btn-sm btn-block confirm_encoding">Confirmer</button></td>
+                            </tr>
+                            <tr>
+                                <th id="mobi">Mobi</th>
+                                <td><button type="button" class="btn btn-primary btn-sm btn-block confirm_encoding">Confirmer</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                    <h5 class="font-italic mb-3">Rapport final</h5>
+                    <textarea name="final_rapport" id="final_rapport" cols="70" rows="7" placeholder="Completez le rapport final"></textarea>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="student_details" role="tabpanel" aria-labelledby="student_details-tab">
+            <div class="container" id="student_mobilities">
+                <div class="row mt-3">
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="mt-3 font-italic" id="mobility_of">Demande de mobilités de
+                                    <div class="font-italic text-warning" id="studentName"></div>
+                                </h5>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger ml-3 my-3" id="bt_back_student_details">Retour <i class="fas fa-undo"></i></button>
+                            </div>
+                        </div>
+
+
+                        <table id="tb_student_mobilities" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Type </th>
+                                    <th scope="col">Pref. </th>
+                                    <th scope="col">Partenaire</th>
+                                    <th scope="col">Programme</th>
+                                    <th scope="col">Pays</th>
+                                    <th scope="col">État</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-3">
+                        <h5 class="mt-1 font-italic" id="pers_data_of">Informations personnelles:</h5>
+                        <hr>
+                        <table id="tb_student_pers_data" class="ml-2">
+                            <tbody>
+                                <tr>
+                                    <td><label class="text-info">Titre:</label></td>
+                                    <td id="st_title"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Date de naissance:</label></td>
+                                    <td id="st_birthDate"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Nationalité:</label></td>
+                                    <td id="st_nationalityId"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Rue:</label></td>
+                                    <td id="st_street"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Numéro:</label></td>
+                                    <td id="st_streetNumber"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Boîte:</label></td>
+                                    <td id="st_box"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Code Postal:</label></td>
+                                    <td id="st_zipCode"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Commune:</label></td>
+                                    <td id="st_commune"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Ville:</label></td>
+                                    <td id="st_city"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Téléphone:</label></td>
+                                    <td id="st_phoneNumber"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">E-mail:</label></td>
+                                    <td id="st_email"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Sexe:</label></td>
+                                    <td id="st_sex"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Nombre d'années supérieurs réussies:</label></td>
+                                    <td id="st_numberHighSchollYearsSucceded"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">IBAN:</label></td>
+                                    <td id="st_bankCardNumber"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Titulaire du compte:</label></td>
+                                    <td id="st_accountOwner"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Nom de la banque:</label></td>
+                                    <td id="st_bankName"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="text-info">Code BIC:</label></td>
+                                    <td id="st_bicCode"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="t_research" role="tabpanel" aria-labelledby="research-tab_t">
+            <h2 class="mt-3">Recherches</h2>
+            <ul class="nav nav-pills mb-3" id="teacher_research_pill" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-users-tab_t" data-toggle="pill" href="#see_users_t" role="tab" aria-controls="pills-users_t" aria-selected="true">Visualiser les utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-partners-tab_t" data-toggle="pill" href="#see_partners_t" role="tab" aria-controls="pills-partners_t" aria-selected="false">Visualiser les partenaires</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-students-tab_t" data-toggle="pill" href="#see_students_t" role="tab" aria-controls="pills-students_t" aria-selected="false">Visualiser les etudiants</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-teacher-reserch">
+                <div class="tab-pane fade" id="see_users_t" role="tabpanel" aria-labelledby="pills-users-tab_t">
+                    <div class="col-11">
+                        <table id="table_users_t" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pseudo</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Rôle</th>
+                                    <th class="d-none"></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="see_partners_t" role="tabpanel" aria-labelledby="pills-partners-tab_t">
+                    <div class="col-11">
+                        <table id="table_partners_t" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">Nom complet</th>
+                                    <th scope="col">Code de mobilité</th>
+                                    <th scope="col">Adresse</th>
+                                    <th scope="col">Pays</th>
+                                    <th scope="col">Ville</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Tel.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="see_students_t" role="tabpanel" aria-labelledby="pills-students-tab_t">
+                    <div class="col-11 mt-3">
+                        <table id="tb_students" class="table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom </th>
+                                    <th scope="col">Prénom </th>
+                                    <th scope="col">Nbre de mobilités</th>
+                                    <th scope="col">Nbre de mobilités à confirmer</th>
+                                    <th class="d-none"></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="payments" role="tabpanel" aria-labelledby="payments-tab">
+            <h2 class="mt-3">Paiements</h2>
+            <table id="tb_payments" class="table my-6 ">
+                <thead>
+                    <tr>
+                        <th scope="col">Ordre cand.</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Programme</th>
+                        <th scope="col">Premier paiement</th>
+                        <th scope="col">Deuxieme paiement</th>
+                        <th scope="col">Année</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

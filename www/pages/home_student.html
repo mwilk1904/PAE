@@ -1,0 +1,372 @@
+<div class="container page" id="pg_home_student">
+
+    <!---------------HEADER---------------------------->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" id="welcome_student"></a>
+            <div class="collapse navbar-collapse"></div>
+            <div class="navbar-header">
+                <ul class="nav nav-tabs" id="student_tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="research-tab" data-toggle="tab" href="#research" role="tab" aria-controls="research" aria-selected="false"><i class="fas fa-search"></i> Recherches</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link disabled" id="personal_data-tab" data-toggle="tab" href="#personal_data" aria-controls="personal_data" aria-selected="false"><i class="fas fa-info"></i> Données Personnelles</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " id="nv_partner-tab" data-toggle="tab" href="#nv_partner" aria-controls="nv_partner" aria-selected="false" style="display:none;"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger" href="#" id="bt_logout_student"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!---------------TAB---------------------------->
+    <div class="tab-content" id="content_tab">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="container mt-3" id="container_home_student">
+                <div class="row">
+                    <div class="col-4 overflow-auto">
+                        <h3>Vos choix de mobilités: </h3>
+                        <h6 class="font-italic">Choisissez vos choix dans l'ordre désiré </h6>
+                        <h5>Choix SMS:</h5>
+                        <form id="formSMS">
+                            <div class="row divSMS ">
+                                <label>1)</label>
+                                <select id="choixSMS1" class="form-control btn btn-light btn-sm ml-3 mb-3 selectSMS">
+                                    <option value="" selected disabled hidden>Sélectionnez votre choix SMS</option>        
+                                </select>
+                            </div>
+                            <div id="placeholderSMS"></div>
+                            <div id="buttonSMS">
+                                <button type="button" class="btn btn-dark ml-3 ibtnDel" id="add_choice_SMS">Ajouter choix <i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </form>
+
+
+                        <hr>
+                        <h5>Choix SMP:</h5>
+                        <form id="formSMP">
+                            <div class="row divSMP ">
+                                <label>1)</label>
+                                <select id="choixSMP1" class="form-control btn btn-light btn-sm ml-3 mb-3 selectSMP">
+                                    <option value="" selected disabled hidden>Sélectionnez votre choix SMP</option>            
+                                </select>
+                            </div>
+                            <div id="placeholderSMP"></div>
+                            <div id="buttonSMP">
+                                <button type="button" class="btn btn-dark ml-3 " id="add_choice_SMP">Ajouter choix <i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </form>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary btn-sm mt-1" id="bt_check_choices">Valider mes choix <i class="fas fa-check"></i></button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-warning btn-sm mt-1" id="bt_nv_partner">Nouveau partenaire</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-8">
+                        <h3>Avancements (demandes en cours)</h3>
+                        <table class="table" id="tb_advancements">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Pref</th>
+                                    <th>Type</th>
+                                    <th>Partenaire</th>
+                                    <th>Etat</th>
+                                    <th>1er paiement</th>
+                                    <th>2eme paiement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="row justify-content-center mt-3">
+                            <button type="button" class="btn btn-danger mr-3 btn-sm" id="bt_cancel_request" disabled>Annuler toutes les demandes <i class="fas fa-window-close"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="nv_partner" role="tabpanel" aria-labelledby="nv_partner-tab">
+            <div class="container mt-3">
+                <h2 class="my-3">Nouveau partenaire</h2>
+                <div class="card px-5">
+                    <div class="card-body">
+                        <form class="justify-content-center formNvPartner">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mt-3">
+                                        <label class="mr-3 text-gray-500 font-italic">Type de mobilité: </label>
+                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-secondary active inputSMS">
+                                                    <input type="radio" name="mobilityCode"  value ="SMS" autocomplete="off" checked> SMS
+                                                </label>
+                                            <label class="btn btn-secondary inputSMP">
+                                                    <input type="radio" name="mobilityCode" value="SMP" autocomplete="off"> SMP
+                                                </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control" name="legalName" placeholder="Nom légal" required>
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control" name="businessName" placeholder="Nom d'affaires" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <input type="text" class="form-control" name="fullName" placeholder="Nom complet" required>
+                                    </div>
+
+                                    <div class="form-group row mt-5">
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control" name="department" placeholder="Département">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control" name="organisationType" placeholder="Type d'organisation">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="number" class="form-control" name="employeesCount" placeholder="Nombre d'employés">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mt-5">
+                                        <div class="col-sm-7 ">
+                                            <input type="text" class="form-control " name="address" placeholder="Adresse" required>
+                                        </div>
+                                        <div class="col-sm">
+                                            <select class="form-control btn btn-light btn-lg mt-1" name="country" id="nv_partner_country" required>
+                                                            <option value=""></option>
+                                                    </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="area" placeholder="Commune">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="zipCode" placeholder="Code postale" required>
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="city" placeholder="Ville" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-5">
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="email" placeholder="Email">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="website" placeholder="Site web">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="phoneNumber" placeholder="Tel." required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary ml-3 my-3" id="bt_confirm_nv_partner">Valider le nouveau partenaire  <i class="fas fa-check"></i></button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger ml-3 my-3" id="bt_back_nv_partner">Retour <i class="fas fa-undo"></i></button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="tab-pane fade" id="research" role="tabpanel" aria-labelledby="research-tab">
+            <h2 class="mt-3">Recherches</h2>
+
+            <ul class="nav nav-pills mb-3" id="student_research_pill" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-users-tab_s" data-toggle="pill" href="#see_users_s" role="tab" aria-controls="pills-users_s" aria-selected="true">Visualiser les étudiants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-partners-tab_s" data-toggle="pill" href="#see_partners_s" role="tab" aria-controls="pills-partners_s" aria-selected="false">Visualiser les partenaires</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-mobilities-tab" data-toggle="pill" href="#see_mobilities" role="tab" aria-controls="pills-mobilities" aria-selected="false">Visualiser les mobilitiés</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-student-reserch">
+                <div class="tab-pane fade" id="see_partners_s" role="tabpanel" aria-labelledby="pills-partners-tab">
+                    <div class="col-11">
+                        <table id="table_partners_s" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th scope="col">Nom complet</th>
+                                    <th scope="col">Code de mobilité</th>
+                                    <th scope="col">Adresse</th>
+                                    <th scope="col">Pays</th>
+                                    <th scope="col">Ville</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Tel.</th>
+                                </tr>
+                            </thead>
+                            <tbody> </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="see_users_s" role="tabpanel" aria-labelledby="pills-users-tab_s">
+                    <div class="col-11">
+                        <table id="table_users_s" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pseudo</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="see_mobilities" role="tabpanel" aria-labelledby="pills-mobilities-tab">
+                    <div class="col-11">
+                        <table id="table_mobilities_s" class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ordre cand.</th>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Pref.</th>
+                                    <th scope="col">Code de mobilité</th>
+                                    <th scope="col">État</th>
+                                    <th scope="col">Partenaire</th>
+                                    <th scope="col">Pays</th>
+                                    <th scope="col">Programme</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tab-pane fade personal_data" id="personal_data" role="tabpanel" aria-labelledby="personal_data-tab">
+            <div class="container mt-3">
+                <h2 class="mt-3">Données personnelles</h2>
+                <div class="card px-5">
+                    <div class="card-body">
+                        <form class="formPersonalData justify-content-center">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mt-3 ">
+                                        <select class="form-control form-control-sm col-3" id="title_select" name="title">
+                                    <option value="" selected disabled hidden>Titre</option>
+                                    <option value="M.">M.</option>
+                                    <option value="Mme">Mme</option>
+                                    <option value="Mlle">Mlle</option>
+                                </select>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type="text" class="form-control datepicker-here" name="birthDate" id="pers_data_birthDate" placeholder="Date de naissance">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <select class="form-control btn btn-light btn-lg " name="nationality" id="pers_data_nationality">
+                                        <option value=""></option>
+                                </select>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type="text" class="form-control " name="street" id="pers_data_street" placeholder="Rue">
+                                    </div>
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm ">
+                                            <input type="number" class="form-control " name="streetNumber" id="pers_data_streetNumber" placeholder="Num">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="box" id="pers_data_box" placeholder="Bte">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm-3 mb-3 mb-sm-0">
+                                            <input type="number" class="form-control " name="zipCode" id="pers_data_zipCode" placeholder="Code postal">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="commune" id="pers_data_commune" placeholder="Commune">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="city" id="pers_data_city" placeholder="Ville">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <input type="text" class="form-control " name="phoneNumber" id="pers_data_phone" placeholder="Telephone">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <select class="form-control form-control-sm col-3" id="sex_select" name="sex">
+                                            <option value="" selected disabled hidden>Sexe</option>
+                                            <option value="M">M</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type="number" class="form-control " name="numberHighSchollYearsSucceded" id="pers_data_numb_hs_years_succeded" placeholder="Nombre d'années supérieurs réussis">
+                                    </div>
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control " name="bankCardNumber" id="pers_data_iban" placeholder="N° du compte en banque (IBAN)">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control " name="accountOwner" id="pers_data_bk_account_owner" placeholder="Titulaire du compte en banque">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-3">
+                                        <div class="col-sm-7 mb-3 mb-sm-0">
+                                            <input type="text" class="form-control " name="bankName" id="pers_data_bk_name" placeholder="Nom de la banque">
+                                        </div>
+                                        <div class="col-sm">
+                                            <input type="text" class="form-control " name="bicCode" id="pers_data_bic_code" placeholder="Code Bic">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <button type="button" class="btn btn-primary ml-3" id="bt_confirm_pers_data">Valider <i class="fas fa-check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

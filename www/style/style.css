@@ -1,0 +1,40 @@
+.page {
+    display: none;
+    overflow: auto;
+}
+
+small.help-block {
+    color: #F44336 !important;
+}
+
+td.details-control {
+    background: url('details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+#pg_login {
+    margin-top: 50px;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: transparent url('../loading.gif') no-repeat 0 0;
+    display: none;
+}
+
+.cancelledRow {
+    background-color: #ffb3b3 !important;
+}
+
+.boxed {
+    border: 1.5px solid red;
+}
+
+table {
+    width: 100% !important;
+}
